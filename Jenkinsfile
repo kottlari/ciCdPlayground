@@ -11,9 +11,21 @@ pipeline {
             }
         }
 
+        stage('unittest') {
+            steps {
+                sh 'yarn test'
+            }
+        }
+
         stage('build') {
             steps {
                 sh 'yarn build'
+            }
+        }
+
+        stage('integrationtest') {
+            steps {
+                sh 'yarn test:e2e'
             }
         }
 
