@@ -29,11 +29,7 @@ pipeline {
                 sh 'yarn test:e2e'
             }
         }
-        post {
-            always {
-                junit 'reports/*.xml'
-            }
-        }
+        
 
         stage('deploy') {
             steps {
@@ -59,6 +55,11 @@ pipeline {
                     profileName: 'role-based-access', 
                     userMetadata: []
             }
+        }
+    }
+    post {
+        always {
+            junit 'reports/*.xml'
         }
     }
 }
