@@ -15,11 +15,7 @@ pipeline {
             steps {
                 sh 'yarn test'
             }
-            post {
-                always {
-                    junit 'reports/*.xml'
-                }
-            }
+            
         }
 
         stage('build') {
@@ -32,10 +28,10 @@ pipeline {
             steps {
                 sh 'yarn test:e2e'
             }
-            post {
-                always {
-                    junit 'reports/*.xml'
-                }
+        }
+        post {
+            always {
+                junit 'reports/*.xml'
             }
         }
 
